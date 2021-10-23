@@ -13,9 +13,6 @@ AUTH0_DOMAIN = getenv('AUTH0_DOMAIN')
 jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
 json_web_keyset = json.loads(jsonurl.read())
 
-ALGORITHMS = ['RS256']
-API_AUDIENCE = getenv('AUTH0_API_AUDIENCE')
-
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -76,8 +73,8 @@ def decode_and_verify(jwks, token, key_id):
         decoded_payload = jwt.decode(
             token,
             rsa_key,
-            algorithms=ALGORITHMS,
-            audience=API_AUDIENCE,
+            algorithms=['RS256'],
+            audience=getenv('AUTH0_API_AUDIENCE'),
             issuer='https://' + AUTH0_DOMAIN + '/'
         )
     except jwt.ExpiredSignatureError:
