@@ -1,0 +1,1 @@
+from .decorator import requires_auth
