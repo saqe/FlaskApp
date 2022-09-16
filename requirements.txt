@@ -14,7 +14,7 @@ importlib-resources==5.3.0
 itsdangerous==2.0.1
 Jinja2==3.0.2
 jose==1.0.0
-Mako==1.1.5
+Mako==1.2.2
 MarkupSafe==2.0.1
 marshmallow==3.14.0
 pyasn1==0.4.8
